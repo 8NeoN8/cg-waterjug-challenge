@@ -2,7 +2,9 @@
   <div class="main-container">
     <div class="title">
       <img class="jug-img jug-a" src="https://cdn-icons-png.flaticon.com/512/3100/3100566.png">
+
       <h1 class="jug-title">The Water Jug Puzzle</h1>
+      
       <img class="jug-img jug-b" src="https://cdn-icons-png.flaticon.com/512/3100/3100566.png">
     </div>
 
@@ -72,9 +74,6 @@ export default {
     }
   },
   methods: {
-    checkInputs(value){
-      console.log(value);
-    }
   },
 }
 </script>

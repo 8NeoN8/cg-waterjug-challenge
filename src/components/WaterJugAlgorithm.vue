@@ -125,11 +125,9 @@ export default {
 
         if (this.isSolved) {
           this.solutionPath = [...new Set(this.solutionPath)].reverse()
-          //console.log('THE PUZZLE HAS BEEN SOLVED ', this.solutionPath,this.finalStep);
           break;
         }
       }
-      // the rest fo the code
     },
     doOption(jugState,option){
       switch (option) {
@@ -182,7 +180,6 @@ export default {
       }
     },
     fillJugA(jugCurrent){
-      //if jug is not fulls
       if(jugCurrent.state[0] != this.jugA && this.optionsDone.fillA == false){
         let tempParent = structuredClone(jugCurrent)
 
@@ -194,7 +191,6 @@ export default {
           action: 'Fill Jug A'
         }
         this.optionsDone.fillA = true
-        //console.log('Se lleno A');
         this.checkFound(step)
       }
     },
@@ -210,7 +206,6 @@ export default {
           action: 'Fill Jug B'
         }
         this.optionsDone.fillB = true
-        //console.log('Se lleno B');
         this.checkFound(step)
       }
     },
@@ -226,7 +221,6 @@ export default {
           action: 'Empty Jug A'
         }
         this.optionsDone.emptyA = true
-        //console.log('Se vacio A');
         this.checkFound(step)
       }
     },
@@ -242,7 +236,6 @@ export default {
           action: 'Empty Jug B'
         }
         this.optionsDone.emptyB = true
-        //console.log('Se vacio B');
         this.checkFound(step)
       }
     },
@@ -251,7 +244,6 @@ export default {
       if(jugCurrent.state[0] > 0 && jugCurrent.state[1] != this.jugB && this.optionsDone.transferA == false){
         
         let space = this.getSpaceOnJug(jugCurrent.state[0], jugCurrent.state[1], this.jugB)
-        //console.log('THE SPACE AVAILABLE IN ' + jugCurrent.state[1] + ' IS ' + space + 'CURRENT STATE IS');
 
         if(jugCurrent.state[0] - space < 0 || jugCurrent.state[1] + space > this.jugB ) return
 
@@ -260,7 +252,6 @@ export default {
         let jugB = jugCurrent.state[1] += space
         let jugA = jugCurrent.state[0] -= space
 
-        //if(jugB != this.jugB) return
 
         let newState = [jugA,jugB]
 
@@ -277,7 +268,6 @@ export default {
     transferJugB(jugCurrent){
       if(jugCurrent.state[1] > 0 && jugCurrent.state[0] != this.jugA && this.optionsDone.transferB == false){
         let space = this.getSpaceOnJug(jugCurrent.state[0], jugCurrent.state[1], this.jugA)
-        //console.log('THE SPACE AVAILABLE IN ' + jugCurrent.state[1] + ' IS ' + space);
         if(jugCurrent.state[1] - space < 0 || jugCurrent.state[0] + space > this.jugA) return
 
         let tempParent = structuredClone(jugCurrent)
@@ -285,7 +275,6 @@ export default {
         let jugA = jugCurrent.state[0] += space
         let jugB = jugCurrent.state[1] -= space
 
-        //if(jugA != this.jugA) return
 
         let newState = [jugA,jugB]
 
@@ -299,7 +288,6 @@ export default {
       }
     },
     getSpaceOnJug(from, to, toCap ){
-      //console.log('DETERMINAR SI HAY ESPACIO PARA TRANSFERIR ESTOS VALORES: \n ',from,to,toCap, '\n total espacio para transferir: \n', toCap - to );
       return Math.min(from,toCap - to)
     },
     checkButton(){
